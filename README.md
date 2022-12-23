@@ -28,7 +28,18 @@ This will start a Docker container based on the official AWS [SAM Build
 Images](https://github.com/aws/aws-sam-build-images) that will compile stripped
 down versions of scipy and numpy. Note that compilation may take some time.
 
-The output of the script is a ZIP file named `scipy-1.8.1_numpy-1.23.0.zip`.
+The output of the script is a ZIP file named `scipy-<version>_numpy-<version>.zip`.
 This ZIP file is a fully-prepared deployment package for a Lambda Layer and can
 be deployed as-is using [your preferred
 method](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
+
+An example using the AWS CLI:
+
+```
+aws lambda publish-layer-version --layer-name python3-8_x86_64_scipy-1-8-1_numpy-1-23-0 \
+    --description "An ultra-lean AWS Lambda Layer containing scipy and numpy." \
+    --license-info "MIT" \
+    --zip-file fileb://scipy-1.8.1_numpy-1.23.0.zip \
+    --compatible-runtimes python3.8 \
+    --compatible-architectures "x86_64"
+```
