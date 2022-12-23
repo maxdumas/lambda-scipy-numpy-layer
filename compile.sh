@@ -2,6 +2,9 @@
 set -xeuo pipefail
 IFS=$'\n\t'
 
+scipy_version="$1"
+numpy_version="$2"
+
 mkdir -p layer/lib
 cp /usr/lib64/libblas.so.3 layer/lib
 cp /usr/lib64/liblapack.so.3 layer/lib
@@ -15,5 +18,5 @@ pip install \
     --global-option=build_ext \
     --global-option='-j 8' \
     -t layer/python \
-    scipy==1.8.1 \
-    numpy==1.23.0
+    scipy==$scipy_version \
+    numpy==$numpy_version

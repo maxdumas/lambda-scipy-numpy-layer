@@ -18,8 +18,11 @@ and packages them up as a Lambda Layer with the required dependencies.
 To create a deployment package for your layer, you can simply run:
 
 ```
-./make_layer.sh
+./make_layer.sh <python_version> <scipy_version> <numpy_version> [platform]
 ```
+
+Note `python_version` must be a currently supported Lambda Python version.
+`platform` is optional and defaults to `linux/amd64`.
 
 This will start a Docker container based on the official AWS [SAM Build
 Images](https://github.com/aws/aws-sam-build-images) that will compile stripped

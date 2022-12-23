@@ -1,4 +1,6 @@
-FROM public.ecr.aws/sam/build-python3.8
+ARG PYTHON_VERSION
+
+FROM public.ecr.aws/sam/build-python${PYTHON_VERSION}
 
 RUN yum install -y \
     lapack-devel
