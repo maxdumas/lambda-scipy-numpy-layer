@@ -2,11 +2,14 @@
 set -xeuo pipefail
 IFS=$'\n\t'
 
-cp /usr/lib/x86_64-linux-gnu/libopenblas.so.0 /var/task
-
-cp /usr/lib/x86_64-linux-gnu/liblapack.so.3 /var/task 
+mkdir -p lib
+cp /usr/lib64/libblas.so.3 lib
+cp /usr/lib64/liblapack.so.3 lib
+cp /usr/lib64/libgfortran.so.4 lib
+cp /usr/lib64/libquadmath.so.0 lib
 
 pip install \
+    -vvv \
     --no-cache-dir \
     --compile \
     --global-option=build_ext \

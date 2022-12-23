@@ -1,11 +1,7 @@
-FROM python:3.8-slim-buster
+FROM public.ecr.aws/sam/build-python3.8
 
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    gcc \
-    gfortran \
-    libopenblas-dev \
-    liblapack-dev
+RUN yum install -y \
+    lapack-devel
 
 ENV CFLAGS="-g0 -Wl,--strip-all -I/usr/include:/usr/local/include -L/usr/lib:/usr/local/lib"
 
