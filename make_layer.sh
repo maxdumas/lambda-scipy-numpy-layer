@@ -15,4 +15,4 @@ docker run --platform linux/amd64 -v "$PWD":/var/task $image_id /var/task/compil
 
 cd layer
 
-zip -9 -r scipy-$scipy_version_numpy-$numpy_version.zip .
+zip -9 -r scipy-$scipy_version-$numpy_version.zip .
